@@ -80,7 +80,7 @@ MagicCards.prototype.nextBlock = function(callback) {
 					set: doc.querySelector("td[align=center] a").textContent,
 					name: doc.querySelector("span a").textContent,
 					icon: doc.querySelector("td img[alt!=en]").getAttribute("src"),
-					type: doc.querySelector("td p").textContent.split(", \n"[0],
+					type: doc.querySelector("td p").textContent.split(", \n")[0],
 					cost: doc.querySelector("td p").textContent.split(", \n")[1],
 					mechanics: doc.querySelector(".ctext b").textContent,
 					description: doc.querySelector("p i").textContent
