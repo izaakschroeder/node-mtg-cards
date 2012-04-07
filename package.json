@@ -4,5 +4,8 @@
 	"description": "Some magic the gathering stuff",
 	"author": "Izaak Schroeder",
 	"engine": "node >= 0.6.0",
-	"main": "cards.js"
+	"main": "cards.js",
+	"dependencies": {
+		"com.izaakschroeder.async-array": ">=0.0.1"
+	}
 }

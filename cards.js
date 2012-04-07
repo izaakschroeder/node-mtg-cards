@@ -1,4 +1,8 @@
-var DOM = require('dom'), http = require('http'), querystring = require('querystring'), AsyncArray = require('async-array');
+var 
+	http = require('http'), 
+	querystring = require('querystring'), 
+	DOM = require('com.izaakschroeder.dom'),
+	AsyncArray = require('com.izaakschroeder.async-array');
 
 function MagicCards() {
 	this.sets = [ ];
@@ -17,8 +21,8 @@ MagicCards.prototype.loadSets = function(callback) {
 		method: "GET"
 	}, function(response) {
 		DOM.parse(response, function(doc) {
-			self.sets = [ ];	
-			doc.querySelector("h2:first").nextElementSibling.querySelectorAll("small").forEach(function(node) {
+			self.sets = [ ];
+			doc.querySelector("h2").nextElementSibling.querySelectorAll("small").forEach(function(node) {
 				self.sets.push(node.textContent);
 			});
 			self.currentSet = 0;
@@ -79,9 +83,9 @@ MagicCards.prototype.nextBlock = function(callback) {
 				callback([{
 					set: doc.querySelector("td[align=center] a").textContent,
 					name: doc.querySelector("span a").textContent,
-					icon: doc.querySelector("td img[alt!=en]").getAttribute("src"),
+					icon: doc.querySelector("td img:not([alt=en])").getAttribute("src"),
 					type: doc.querySelector("td p").textContent,
-					mechanics: doc.querySelector(".ctext b").textContent,
+					//mechanics: doc.querySelector(".ctext b").textContent,
 					description: doc.querySelector("p i").textContent
 
 				}]);
